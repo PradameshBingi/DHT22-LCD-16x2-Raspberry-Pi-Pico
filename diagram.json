@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "author": "Pradamesh Bingi",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -209.75,
+      "left": 18.35,
+      "rotate": 270,
+      "attrs": { "env": "micropython-20241129-v1.24.1" }
+    },
+    {
+      "type": "wokwi-7segment",
+      "id": "sevseg1",
+      "top": 14.58,
+      "left": -90.92,
+      "attrs": { "common": "cathode", "color": "red" }
+    }
+  ],
+  "connections": [
+    [ "sevseg1:A", "pico:GP0", "orange", [ "v-27.96", "h38.4" ] ],
+    [ "sevseg1:B", "pico:GP1", "blue", [ "v-18.36", "h48" ] ],
+    [ "pico:GP2", "sevseg1:C", "limegreen", [ "v172.8", "h-57.6" ] ],
+    [ "sevseg1:D", "pico:GP3", "yellow", [ "v19.2", "h86.4" ] ],
+    [ "sevseg1:E", "pico:GP4", "purple", [ "v28.8", "h153.6", "v-86.4", "h-48" ] ],
+    [ "sevseg1:F", "pico:GP5", "gold", [ "v-37.56", "h124.8" ] ],
+    [
+      "sevseg1:G",
+      "pico:GP6",
+      "magenta",
+      [ "v-8.76", "h-9.6", "v115.2", "h182.4", "v-115.2", "h-38.4" ]
+    ],
+    [ "sevseg1:COM.2", "pico:GND.1", "black", [ "v-8.76", "h67.2" ] ]
+  ],
+  "dependencies": {}
+}

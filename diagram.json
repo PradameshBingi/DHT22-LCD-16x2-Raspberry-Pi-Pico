@@ -4,35 +4,55 @@
   "editor": "wokwi",
   "parts": [
     {
-      "type": "board-pi-pico-w",
+      "type": "wokwi-pi-pico",
       "id": "pico",
-      "top": -209.75,
-      "left": 18.35,
-      "rotate": 270,
+      "top": 163.9,
+      "left": 36.45,
+      "rotate": 90,
       "attrs": { "env": "micropython-20241129-v1.24.1" }
     },
+    { "type": "wokwi-lcd1602", "id": "lcd1", "top": -34.97, "left": -80, "attrs": {} },
     {
-      "type": "wokwi-7segment",
-      "id": "sevseg1",
-      "top": 14.58,
-      "left": -90.92,
-      "attrs": { "common": "cathode", "color": "red" }
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 119.15,
+      "left": 163.2,
+      "attrs": { "value": "220" }
+    },
+    { "type": "wokwi-dht22", "id": "dht1", "top": -47.7, "left": -187.8, "attrs": {} },
+    {
+      "type": "wokwi-text",
+      "id": "text1",
+      "top": -57.6,
+      "left": 28.8,
+      "attrs": { "text": "LCD 16x2" }
+    },
+    {
+      "type": "wokwi-text",
+      "id": "text2",
+      "top": 412.8,
+      "left": -134.4,
+      "attrs": {
+        "text": "This project uses a DHT22 sensor connected to a microcontroller (Raspberry Pi Pico) \nto measure the surrounding temperature and humidity in real time. \nThe program then displays these two measurements simultaneously \non separate lines of a 16x2 character LCD screen. The entire process \nruns in a continuous loop, ensuring the display is always up-to-date."
+      }
     }
   ],
   "connections": [
-    [ "sevseg1:A", "pico:GP0", "orange", [ "v-27.96", "h38.4" ] ],
-    [ "sevseg1:B", "pico:GP1", "blue", [ "v-18.36", "h48" ] ],
-    [ "pico:GP2", "sevseg1:C", "limegreen", [ "v172.8", "h-57.6" ] ],
-    [ "sevseg1:D", "pico:GP3", "yellow", [ "v19.2", "h86.4" ] ],
-    [ "sevseg1:E", "pico:GP4", "purple", [ "v28.8", "h153.6", "v-86.4", "h-48" ] ],
-    [ "sevseg1:F", "pico:GP5", "gold", [ "v-37.56", "h124.8" ] ],
-    [
-      "sevseg1:G",
-      "pico:GP6",
-      "magenta",
-      [ "v-8.76", "h-9.6", "v115.2", "h182.4", "v-115.2", "h-38.4" ]
-    ],
-    [ "sevseg1:COM.2", "pico:GND.1", "black", [ "v-8.76", "h67.2" ] ]
+    [ "pico:GP7", "lcd1:D7", "green", [ "v-19.2", "h19.2" ] ],
+    [ "pico:GP8", "lcd1:D6", "yellow", [ "v-28.8", "h9.6" ] ],
+    [ "pico:GP9", "lcd1:D5", "blue", [ "v0", "v-134.4" ] ],
+    [ "pico:GP10", "lcd1:D4", "pink", [ "v-48", "h19.2" ] ],
+    [ "pico:GP11", "lcd1:E", "white", [ "v-48", "h-19.2" ] ],
+    [ "lcd1:RS", "pico:GP12", "green", [ "v96", "h29.1" ] ],
+    [ "pico:GND.1", "lcd1:VSS", "black", [ "v-38.4", "h-38.4", "v-67.2", "h-144" ] ],
+    [ "pico:GND.1", "lcd1:RW", "black", [ "v-38.4", "h-38.4", "v-67.2", "h-105.5" ] ],
+    [ "pico:GND.1", "lcd1:K", "black", [ "v-38.4", "h-38.4", "v-96" ] ],
+    [ "pico:VSYS", "lcd1:VDD", "red", [ "v10.8", "h19.2", "v-163.2", "h-201.6" ] ],
+    [ "pico:VSYS", "r1:2", "red", [ "v10.8", "h19.2", "v-163.2", "h57.6" ] ],
+    [ "r1:1", "lcd1:A", "red", [ "v0", "h-48", "v-9.6", "h-19.2" ] ],
+    [ "dht1:VCC", "pico:3V3", "red", [ "v259.2", "h297.6" ] ],
+    [ "pico:GND.1", "dht1:GND", "black", [ "v-38.4", "h-38.4", "v-67.2", "h-144" ] ],
+    [ "dht1:SDA", "pico:GP15", "purple", [ "v0" ] ]
   ],
   "dependencies": {}
 }

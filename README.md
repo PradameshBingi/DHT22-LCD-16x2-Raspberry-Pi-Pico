@@ -15,7 +15,7 @@ The program continuously measures the environment and updates the LCD so the dis
 ---
 
 ## Live Simulation
-WokWI Simulation https://wokwi.com/projects/446597260086069249
+WokWI Simulation https://wokwi.com/projects/446214391251600385
 
 ---
 
